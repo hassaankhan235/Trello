@@ -1,11 +1,13 @@
 let cahcheData = 'Trello';
 
 this.addEventListener('install', (event) => {
+  console.log("SUCCESS")
     event.waitUntil(
       caches.open(cahcheData).then((data) => {
-        data.addAll([
-          'AppStateContect',
-          'index.html',
+        console.log('[Service Worker] Caching all: app shell and content');
+        return data.addAll([
+          '/index.html',
+          '/../src/AppStateContect',
           '/',
           '/static/js/bundle.js',
           '/static/js/0.chunk.js',
@@ -14,6 +16,17 @@ this.addEventListener('install', (event) => {
         ])
       }).catch((err) => {
         console.log('err', err)
+      })
+    )
+  })
+
+  this.addEventListener('fetch', (event)=> {
+    event.respondWith(
+      caches.match(event.request).then(resp => {
+        if(resp)
+        {
+          return resp
+        }
       })
     )
   })
