@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,gBACE,YAAa,CACb,UACF,CAEA,KACE,YAAa,CACb,WACF","file":"main.1452ced0.chunk.css","sourcesContent":["html, body, #root {\n  height: 100vh;\n  width: 100%;\n}\n\n.App {\n  display: flex;\n  height: 100%;\n}\n"]}
