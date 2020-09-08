@@ -50,6 +50,7 @@ export default function Column({text, index, id} : PropsWithChildren<ColumnProps
       DragDrop = {(e) => e.preventDefault()}
      />
     }
+    return(null)
       })
       }
     <AddNewItem dark toggleButtonText= "+ Add another task" 

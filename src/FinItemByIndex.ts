@@ -17,6 +17,7 @@ export const findIdByDraggedProp = (index: number, state: any) : string  => {
           return task.id
         } 
     }
+    return 'wrong'
       })  
   return 'wrong'
   }
@@ -30,6 +31,7 @@ export const findIdByDraggedProp = (index: number, state: any) : string  => {
        if(Tindex > -1) {
          TaskIndex = Tindex
        }
+       return TaskIndex
     }) 
      return TaskIndex
   }
