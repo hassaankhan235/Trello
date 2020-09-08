@@ -17,6 +17,7 @@ const App = () => {
   return (
     <div className="App">
       <AppContainer>
+        <div> TRELLO </div>
         {
           state.lists.map((list : any, i: number) => (
             <Column id={list.id} text= {list.text} key = {list.id} index = {i}  />

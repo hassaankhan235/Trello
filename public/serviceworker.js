@@ -1,4 +1,4 @@
-let cahcheData = 'TRELLO';
+let cahcheData = 'Trello';
 
 this.addEventListener('install', (event) => {
     event.waitUntil(
@@ -10,8 +10,7 @@ this.addEventListener('install', (event) => {
           '/static/js/bundle.js',
           '/static/js/0.chunk.js',
           '/static/js/main.chunk.js',
-          '/manifest.json',
-          'static / media / stopwatch.9fb404c9.png',
+          '/manifest.json'
         ])
       }).catch((err) => {
         console.log('err', err)
