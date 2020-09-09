@@ -6,9 +6,8 @@ this.addEventListener('install', (event) => {
       caches.open(cahcheData).then((data) => {
         console.log('[Service Worker] Caching all: app shell and content');
         return data.addAll([
-          './index.html',
-          './../src/AppStateContect',
-          './',
+          'index.html',
+          '/',
           './static/js/bundle.js',
           './static/js/0.chunk.js',
           './static/js/main.chunk.js',
