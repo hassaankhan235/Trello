@@ -6,8 +6,9 @@ this.addEventListener('install', (event) => {
       caches.open(cahcheData).then((data) => {
         console.log('[Service Worker] Caching all: app shell and content');
         return data.addAll([
+          'index.html',
           '/',
-          '/index.html'
+          './manifest.json'
         ])
       }).catch((err) => {
         console.log('err', err)
