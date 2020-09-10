@@ -9,6 +9,8 @@ this.addEventListener('install', (event) => {
           'index.html',
           '/',
           './static/js/2.c02aa915.chunk.js',
+          './static/main.css',
+          './static/main.js',
           './static/js/2.c02aa915.chunk.js.map', 
           './manifest.json'
         ])
