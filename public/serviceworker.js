@@ -1,35 +1,37 @@
-let cahcheData = 'Trello';
+let cahcheData = 'Stop-Watch';
 
 this.addEventListener('install', (event) => {
-  console.log("SUCCESS")
-    event.waitUntil(
-      caches.open(cahcheData).then((data) => {
-        console.log('[Service Worker] Caching all: app shell and content');
-        return data.addAll([
-          'index.html',
-          '/',
-          './static/js/2.c02aa915.chunk.js',
-          './static/js/runtime-main.bb9ee77d.js',
-          './static/js/2.c02aa915.chunk.js.map', 
-          
-          './manifest.json'
-        ])
-      }).catch((err) => {
-        console.log('err', err)
-      })
-    )
-  })
+  event.waitUntil(
+    caches.open(cahcheData).then((data) => {
+      data.addAll([
+        'index.html',
+        '/',
+        '/static/js/bundle.js',
+        '/static/js/0.chunk.js',
+        '/static/js/main.chunk.js',
+        '/manifest.json',
+       
+      ])
+    }).catch((err) => {
+      console.log('err', err)
+    })
+  )
+})
 
-  this.addEventListener('fetch', (event)=> {
-    if(!navigator.onLine)
-    {
-      event.respondWith( 
-        caches.match(event.request).then(resp => {
-          if(resp)
-          {
-            return resp
-          }
-        })
-         )
-    }
-  })
+
+
+this.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function (response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+
+
+        return fetch(event.request);
+      }
+      )
+  );
+});
