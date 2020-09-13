@@ -10,7 +10,7 @@ this.addEventListener('install', (event) => {
         '/static/js/0.chunk.js',
         '/static/js/main.chunk.js',
         '/manifest.json',
-       
+        'static / media / stopwatch.9fb404c9.png',
       ])
     }).catch((err) => {
       console.log('err', err)
@@ -21,17 +21,19 @@ this.addEventListener('install', (event) => {
 
 
 this.addEventListener('fetch', function (event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function (response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
+  if(!navigator.onLine){
+    event.respondWith(
+      caches.match(event.request)
+        .then(function (response) {
+          // Cache hit - return response
+          if (response) {
+            return response;
+          }
+  
+  
+          return fetch(event.request);
         }
-
-
-        return fetch(event.request);
-      }
-      )
-  );
+        )
+    );
+  }
 });
