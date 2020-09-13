@@ -25,6 +25,7 @@ this.addEventListener('fetch', function (event) {
     event.respondWith(
       caches.match(event.request)
         .then(function (response) {
+          console.log("MATCH FOUND")
           // Cache hit - return response
           if (response) {
             return response;
