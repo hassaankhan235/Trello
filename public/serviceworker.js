@@ -1,8 +1,8 @@
-let cahcheData = 'Stop-Watch';
+let cacheName = 'Stop-Watch';
 
 this.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(cahcheData).then((data) => {
+    caches.open(cacheName).then((data) => {
       data.addAll([
         'index.html',
         '/',
