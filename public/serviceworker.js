@@ -29,11 +29,20 @@ this.addEventListener('fetch', function (event) {
           if (response) {
             return response;
           }
-  
-  
-          return fetch(event.request);
-        }
-        )
-    );
-  }
-});
+          requestToCache =  event.request.clone()
+          return fetch(requestToCache).then(
+            function(response){
+              if (!response || response.status !== 200) {
+                return response;
+            }
+            var responseToCache = response.clone();
+          caches.open(cacheName)
+          .then(function(cache) {
+          cache.put(requestToCache, responseToCache)
+          })
+          return response
+        })
+        
+      })
+    )}
+})
