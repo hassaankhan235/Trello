@@ -18,7 +18,7 @@ this.addEventListener('install', (event) => {
 })
 
 
-this.addEventListener('fetch', event => {
+self.addEventListener('fetch', event => {
   event.respodWith(
     caches.match(event.request,  { ignoreSearch: true })
     .then(function(response){
