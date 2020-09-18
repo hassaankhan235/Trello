@@ -1,32 +1,44 @@
-let cahcheData = 'Trello';
+let cacheName = 'Trello';
 
 this.addEventListener('install', (event) => {
-  console.log("SUCCESS")
-    event.waitUntil(
-      caches.open(cahcheData).then((data) => {
-        console.log('[Service Worker] Caching all: app shell and content');
-        return data.addAll([
-          'index.html',
-          '/',
-          './static/js/bundle.js',
-          './manifest.json'
-        ])
-      }).catch((err) => {
-        console.log('err', err)
-      })
-    )
-  })
+  event.waitUntil(
+    caches.open(cacheName).then((data) => {
+      data.addAll([
+        'index.html',
+        '/',
+        '/static/js/bundle.js',
+        '/static/js/0.chunk.js',
+        '/static/js/main.chunk.js',
+        '/manifest.json'
+      ])
+    }).catch((err) => {
+      console.log('err', err)
+    })
+  )
+})
 
-  this.addEventListener('fetch', (event)=> {
-    if(!navigator.onLine)
-    {
-      event.respondWith( 
-        caches.match(event.request).then(resp => {
-          if(resp)
-          {
-            return resp
+
+self.addEventListener('fetch', function(event)  {
+    event.respondWith(
+    caches.match(event.request )
+    .then(function(response){
+      if(response){
+        return response
+      }
+      var requestToCache = event.request.clone()
+      return fetch(requestToCache).then(
+        function(response){
+          if(!response || response.status !== 200 ){
+            return response
           }
-        })
-         )
-    }
-  })
+          var responseToCache = response.clone()
+          caches.open(cacheName).then(function(cache){
+            cache.put(requestToCache, responseToCache)
+          })
+          return response;
+        }
+      )
+    })
+  )
+      });
+      

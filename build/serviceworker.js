@@ -8,7 +8,10 @@ this.addEventListener('install', (event) => {
         return data.addAll([
           'index.html',
           '/',
-          './static/js/bundle.js',
+          './static/js/2.c02aa915.chunk.js',
+          './static/js/runtime-main.bb9ee77d.js',
+          './static/js/2.c02aa915.chunk.js.map', 
+          './static/js/main.b05c7e06.chunk.js',
           './manifest.json'
         ])
       }).catch((err) => {
