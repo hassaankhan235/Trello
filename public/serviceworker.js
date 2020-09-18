@@ -1,4 +1,4 @@
-let cacheName = 'Stop-Watch';
+let cacheName = 'Trello';
 
 this.addEventListener('install', (event) => {
   event.waitUntil(
@@ -20,7 +20,8 @@ this.addEventListener('install', (event) => {
 
 this.addEventListener('fetch', event => {
   event.respodWith(
-    caches.match(event.request).then(function(response){
+    caches.match(event.request,  { ignoreSearch: true })
+    .then(function(response){
       if(response){
         return response
       }
