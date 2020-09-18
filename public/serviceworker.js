@@ -20,7 +20,7 @@ this.addEventListener('install', (event) => {
 
 self.addEventListener('fetch', event => {
   event.respodWith(
-    caches.match(event.request,  { ignoreSearch: true })
+    caches.match(event.request)
     .then(function(response){
       if(response){
         return response
